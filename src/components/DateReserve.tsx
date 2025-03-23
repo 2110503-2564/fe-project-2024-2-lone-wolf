@@ -23,9 +23,9 @@ export default function DateReserve ({onDateChange, onLocationChange}
             </LocalizationProvider>
             <Select variant='standard' name='location' id='venue' className='h-[2em] w-[200px]'
             value={location} onChange={(e)=>{setLocation(e.target.value); onLocationChange(e.target.value);}}> 
-                <MenuItem value='Bloom'>The Bloom Pavilion</MenuItem>
-                <MenuItem value='Spark'>Spark Space</MenuItem>
-                <MenuItem value='GrandTable'>The Grand Table</MenuItem>
+                <MenuItem value='bloom'>LangHam Hotel</MenuItem>
+                <MenuItem value='Spark'>Vischio Hotel</MenuItem>
+                <MenuItem value='GrandTable'>Centara Hotel</MenuItem>
             </Select>
             
         </div>
