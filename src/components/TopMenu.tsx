@@ -15,7 +15,6 @@ export default async function TopMenu () {
             alt='logo' width={0} height={0} sizes="100vh"/>
             <TopMenuItem title='Select Venue' pageRef='/venue'/>
             <TopMenuItem title='Booking' pageRef='/booking'/> 
-            <TopMenuItem title='Reservation' pageRef='/reservations'/> 
             <TopMenuItem title='Cart' pageRef='/cart'/>
             {
                 session?
@@ -39,7 +38,7 @@ export default async function TopMenu () {
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Sign-In</div>
                         </Link>
-                        <Link href="/auth/register">
+                        <Link href="api/auth/register">
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Sign-Up</div>
                         </Link>

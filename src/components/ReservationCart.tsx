@@ -7,9 +7,6 @@ export default function ReservationCart() {
     const venueItems = useAppSelector((state)=> state.reduxPersistedReducer.bookSlice.bookItems)
     const dispatch = useDispatch<AppDispatch>()
 
-    console.log('hello')
-    console.log(venueItems)
-
     return(
         <>
         {
