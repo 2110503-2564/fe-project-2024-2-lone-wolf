@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 export default async function DashboardPage() {
 
     const addVenue = async (addVenueForm:FormData) => {
-        "use Server"
+        'use server'
         const name = addVenueForm.get("venue") as string;
         const description = addVenueForm.get("desc") as string;
         const picture = addVenueForm.get("picture") as string;
@@ -30,13 +30,14 @@ export default async function DashboardPage() {
     }
 
     const session = await getServerSession(authOptions)
+    if(!session) console.log('nah')
     if(!session || !session.user.token) return null
 
     const profile = await getUserProfile(session.user.token)
     var createdAt = new Date(profile.data.createdAt)
 
     return(
-        <main className="bg-slate-100 m-5 p-5">
+        <main className="m-5 p-5">
             <div className="text-2xl">{profile.data.name}</div>
             <table className="table-auto border-separate border-spacing-2">
                 <tbody>

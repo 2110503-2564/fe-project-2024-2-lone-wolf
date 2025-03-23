@@ -35,12 +35,6 @@ export default  function Reservations() {
         const [venue, setVenue] = useState<string>("")
         const [tel, setTel] = useState<string>("")
 
-        // const options = [
-        //     { value: 'Bloom', label:'The Bloom Pavilion'},
-        //     { value: 'Spark', label:'Spark Space'},
-        //     { value: 'GrandTable', label:'The Grand Table'},
-        // ]
-
     return(
         <main className="w-[100%] flex flex-col items-center space-y-4">
 
