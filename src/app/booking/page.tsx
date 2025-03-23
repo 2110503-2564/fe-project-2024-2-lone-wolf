@@ -63,7 +63,7 @@ export default  function Reservations() {
                 <DateReserve onDateChange={(value:Dayjs)=>setBookDate(value)} onLocationChange={(value:string)=>setVenue(value)}/>
             </div>
             <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
-            shadow-sm text-white" name="Book Venue" onClick={makeReservation}>Book Venue</button>
+            shadow-sm text-white" name="Book Venue" onClick={makeReservation}>Book Hotel</button>
         </main>
     );
 }

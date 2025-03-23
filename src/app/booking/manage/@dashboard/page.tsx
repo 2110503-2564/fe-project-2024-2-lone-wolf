@@ -61,7 +61,7 @@ export default async function DashboardPage() {
                 <form action={addVenue}>
                     <div className="text-xl text-blue-700">Create Venue</div>
                     <div className="flex items-center w-1/2 my-2">
-                        <label className="w-auto block text-gray-700 pr-4" htmlFor="venue">Venue</label>
+                        <label className="w-auto block text-gray-700 pr-4" htmlFor="venue">Hotel</label>
                         <input type="text" required id="venue" name="venue" placeholder="Venue Name"
                         className="bg-white border-2 border-gray-200 rounded w-full p-2
                         text-gray-700 focus:outline-none focus:border-blue-400"/>

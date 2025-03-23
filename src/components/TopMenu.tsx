@@ -13,7 +13,7 @@ export default async function TopMenu () {
         <div className={styles.menucontainer}>
             <Image src={'/img/logo.png'} className={styles.logoimg}
             alt='logo' width={0} height={0} sizes="100vh"/>
-            <TopMenuItem title='Select Venue' pageRef='/venue'/>
+            <TopMenuItem title='Select Hotel' pageRef='/venue'/>
             <TopMenuItem title='Booking' pageRef='/booking'/> 
             <TopMenuItem title='Cart' pageRef='/cart'/>
             {

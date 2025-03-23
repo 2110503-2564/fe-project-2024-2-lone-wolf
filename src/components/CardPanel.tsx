@@ -9,9 +9,9 @@ import getVenues from '@/libs/getVenues';
 
 export default function CardPanel() {   
     let defaultVenue = new Map<string, number>([
-        ["The Bloom Pavilion", 0],
-        ["Spark Space", 0],
-        ["The Grand Table", 0]
+        ["LangHam Hotel", 0],
+        ["Vischio Hotel", 0],
+        ["Centara Hotel", 0]
     ])
     const cardReducer = (venueList:Map<string, number>, action:{type:string, venueName:string, rating?: number})=>{
         switch(action.type){
@@ -39,9 +39,9 @@ export default function CardPanel() {
      * Mock Data for Demonstration
      */
 
-    const mockVenueRepo = [{vid:"001", name:"The Bloom Pavilion", image:"/img/bloom.jpg"},
-        {vid:"002", name:"Spark Space", image:"/img/sparkspace.jpg"},
-        {vid:"003", name:"The Grand Table", image:"/img/grandtable.jpg"}
+    const mockVenueRepo = [{vid:"001", name:"LangHam Hotel", image:"/img/langham.jpg"},
+        {vid:"002", name:"Vischio Hotel", image:"/img/vischio.jpg"},
+        {vid:"003", name:"Centara Hotel", image:"/img/centara.jpg"}
     ]
 
     const [venueResponse, setVenueResponse] = useState<VenueJson|null>(null)
@@ -55,7 +55,7 @@ export default function CardPanel() {
         fetchData()
     }, [])
 
-    if(!venueResponse) return (<p>Venue Panel is Loading ...</p>)
+    if(!venueResponse) return (<p>Hotel Panel is Loading ...</p>)
 
     return (
         <main>
@@ -72,7 +72,7 @@ export default function CardPanel() {
                     }
                 </div>
             </div>
-            <div className='w-full text-xl font-medium'>Venue List With Ratings:{venueList.size}</div>
+            <div className='w-full text-xl font-medium'>Hotel List With Ratings:{venueList.size}</div>
             <div>
             { Array.from(venueList).map(([venue, rating])=><div data-testid={venue}
                     onClick={()=>dispatch({type:'remove', venueName:venue})}>{venue}:{rating}</div>)}
