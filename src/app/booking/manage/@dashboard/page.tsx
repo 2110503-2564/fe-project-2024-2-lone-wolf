@@ -36,6 +36,7 @@ export default async function DashboardPage() {
     const profile = await getUserProfile(session.user.token)
     var createdAt = new Date(profile.data.createdAt)
 
+    console.log(profile)
     return(
         <main className="m-5 p-5">
             <div className="text-2xl">{profile.data.name}</div>
