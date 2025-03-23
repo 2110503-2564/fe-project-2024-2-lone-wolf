@@ -1,6 +1,7 @@
 import { User } from "../../interface"
 
 export default async function userRegister(user: User) {
+    console.log(user)
 
     const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",

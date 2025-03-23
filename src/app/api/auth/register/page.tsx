@@ -11,7 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [tel, setTel] = useState("");
 
-  const makeUser = (e: React.FormEvent) => {
+  const makeUser = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const user: User = {
@@ -21,7 +21,10 @@ export default function Register() {
         tel
     }
     
-    userRegister(user)
+    const response = await userRegister(user)
+
+    if(response.ok)
+      console.log('user created')
   };
 
   return (
