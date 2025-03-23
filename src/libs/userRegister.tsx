@@ -1,9 +1,4 @@
-interface User {
-    name: string;
-    tel: string;
-    email: string;
-    password: string;
-}
+import { User } from "../../interface"
 
 export default async function userRegister(user: User) {
 

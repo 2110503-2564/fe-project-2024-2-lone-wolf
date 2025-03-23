@@ -19,6 +19,13 @@ export interface VenueItem {
     data: VenueItem[]
   }
 
+  export interface User {
+    name: string;
+    email: string;
+    password: string;
+    tel: string;
+  }
+
   export interface BookingItem {
     nameLastname: string;
     tel: string;
