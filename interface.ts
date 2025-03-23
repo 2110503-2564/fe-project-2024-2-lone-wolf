@@ -26,9 +26,26 @@ export interface VenueItem {
     tel: string;
   }
 
-  export interface BookingItem {
-    nameLastname: string;
+export interface Hotel {
+    _id: string;
+    name: string;
+    province: string;
     tel: string;
-    venue: string;
-    bookDate: string;
-  }
+    id: string;
+}
+
+export interface BookingItem {
+    _id: string;
+    apptDate: string;  // ISO string format
+    user: string;  // User ID reference
+    hotel: Hotel;  // Embedded hotel object
+    created: string;  // ISO string format
+    __v: number;
+}
+
+export interface BookingJson {
+    success: boolean;
+    count: number;
+    pagination: Object;
+    data: BookingItem[];
+}

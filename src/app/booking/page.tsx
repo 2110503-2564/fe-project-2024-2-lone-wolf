@@ -25,31 +25,11 @@ export default function Reservations() {
         const [venue, setVenue] = useState<string>("")
         const [tel, setTel] = useState<string>("")
 
-          // Use the useSession hook to get session data
         const { data: session, status } = useSession();  // Access session and its status
 
-        // Loading state while session is being fetched
-        const [loading, setLoading] = useState<boolean>(status === "loading");
-
-        useEffect(() => {
-            // Once session is fetched, stop loading
-            if (status !== "loading") {
-                setLoading(false);
-            }
-        }, [status]);
-    
         const makeReservation = () => {
-            if(vid && name && bookDate) {
-                const item:BookingItem = {
-                    bookDate: dayjs(bookDate).format('YYYY/MM/DD'),
-                    nameLastname: name,
-                    tel,
-                    venue
-                }
-                dispatch(addBooking(item))
-
-                if(session)
-                    createBooking(session.user?.token, vid, bookDate);
+            if(vid && name && bookDate && session) {
+                createBooking(session.user?.token, vid, bookDate);
             }
         }
         

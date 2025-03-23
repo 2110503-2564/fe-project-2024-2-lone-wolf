@@ -15,8 +15,6 @@ export default async function Venue(){
             <Suspense fallback={<p>Loading ... <LinearProgress/></p>}>
                 <VenueCatalog venuesJson={venues}/>
                 <hr className="my-10"/>
-                <h1 className="text-xl font-medium">TRY Client-Side Hotel</h1>
-                <CardPanel/>
             </Suspense>
         </main>
     )

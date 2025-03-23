@@ -9,7 +9,7 @@ export default async function getBooking(token:string) {
     })
 
     if(!response.ok) {
-        throw new Error("Failed to fetch user profile")
+        throw new Error("Failed to fetch bookings")
     }
 
     return await response.json()
