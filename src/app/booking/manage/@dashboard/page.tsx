@@ -30,7 +30,6 @@ export default async function DashboardPage() {
     }
 
     const session = await getServerSession(authOptions)
-    if(!session) console.log('nah')
     if(!session || !session.user.token) return null
 
     const profile = await getUserProfile(session.user.token)
