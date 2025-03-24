@@ -65,7 +65,7 @@ export default function Card({ venueName, imgSrc, onRate }: CardProps) {
     const [rating, setRating] = useState<number | null>(0);
 
     return (
-        <InteractiveCard contentName={venueName}>
+        <InteractiveCard>
             <div className="w-full bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                 {/* รูปภาพ */}
                 <div className="w-full h-[70%] relative">
