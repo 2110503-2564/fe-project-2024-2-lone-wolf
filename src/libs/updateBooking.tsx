@@ -1,6 +1,8 @@
-import { Dayjs } from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 
-export default async function updateBooking(token:string, id:string, date:Dayjs) {
+export default async function updateBooking(token:string, id:string, date:string) {
+    const defaultDate = date ? date : dayjs().toISOString;
+
     const response = await fetch(`http://localhost:5000/api/appointments/${id}`, {
         method: "PUT",
         headers: {
@@ -8,7 +10,7 @@ export default async function updateBooking(token:string, id:string, date:Dayjs)
             Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-            apptDate: date.toISOString()
+            apptDate: defaultDate
         }),
     })
 
