@@ -1,7 +1,7 @@
 
-export default async function getHotel(id:string) {
+export default async function getHotels() {
     
-    const response = await fetch(`http://localhost:5000/api/hotels/${id}`, {
+    const response = await fetch("http://localhost:5000/api/hotels", {
         method: "GET",
     })
 

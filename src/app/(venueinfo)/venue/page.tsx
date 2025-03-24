@@ -1,13 +1,15 @@
 import CardPanel from "@/components/CardPanel"
 import Card from "@/components/InteractiveCard"
 import getVenues from "@/libs/getVenues";
-import { VenueJson } from "../../../../interface"
+import { BookingJson, HotelJson, VenueJson } from "../../../../interface"
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
 import VenueCatalog from "@/components/VenueCatalog";
+import getBooking from "@/libs/getBooking";
+import getHotels from "@/libs/getHotels";
 
 export default async function Venue(){
-    const venues:VenueJson = await getVenues();
+    const venues:HotelJson = await getHotels();
 
     return (
         <main className="text-center p-5">

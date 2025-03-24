@@ -2,6 +2,8 @@ import getVenue from "@/libs/getVenue";
 import Image from "next/image";
 import { VenueItem, VenueJson } from "../../../../../interface";
 import { Link } from "@mui/material";
+import getBooking from "@/libs/getBooking";
+import getHotel from "@/libs/getHotel";
 
 export default async function VenueDetailPage({params}: {params: {vid:string}}){
 
@@ -10,7 +12,7 @@ export default async function VenueDetailPage({params}: {params: {vid:string}}){
     // mockVenueRepo.set("002", {name:"Spark Space", image:"/img/sparkspace.jpg"});
     // mockVenueRepo.set("003", {name:"The Grand Table", image:"/img/grandtable.jpg"});
 
-    const venueDetail= await getVenue(params.vid)
+    const venueDetail= await getHotel(params.vid)
 
     return(
         <main className="text-center p-5">

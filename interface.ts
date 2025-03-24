@@ -34,6 +34,13 @@ export interface Hotel {
     id: string;
 }
 
+export interface HotelJson {
+    success: boolean,
+    count: number,
+    pagination: Object,
+    data: Hotel[]
+}
+
 export interface BookingItem {
     _id: string;
     apptDate: string;  // ISO string format

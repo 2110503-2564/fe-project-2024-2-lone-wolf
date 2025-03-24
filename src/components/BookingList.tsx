@@ -16,7 +16,6 @@ export default async function BookingList() {
     if(!session) return null
 
     const venueItems:BookingJson = await getBooking(session?.user.token)
-
         
     return (
         <>
