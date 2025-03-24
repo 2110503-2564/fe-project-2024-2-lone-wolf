@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 import React from 'react';
 import styles from './card.module.css'
 import Image from 'next/image';
@@ -23,5 +23,24 @@ export default function InteractiveCard({ children, contentName } : {children: R
             {children}
         </div>
         
+    );
+}*/
+
+'use client'
+import React from 'react';
+
+export default function InteractiveCard({ children }: { children: React.ReactNode }) {
+    function onCardMouseAction(event: React.SyntheticEvent) {
+        event.currentTarget.classList.toggle('shadow-lg');
+        event.currentTarget.classList.toggle('shadow-2xl');
+    }
+
+    return (
+        <div className='w-full h-[300px] rounded-lg shadow-lg bg-white hover:bg-neutral-200 
+                        transition-all duration-300 cursor-pointer' 
+             onMouseOver={onCardMouseAction} 
+             onMouseOut={onCardMouseAction}>
+            {children}
+        </div>
     );
 }
