@@ -33,7 +33,7 @@ export function TravelCard() {
 
             {/* Video Details */}
             <div className="flex flex-col">
-                <h2 className="text-lg font-semibold text-gray-800">Thailand Natural</h2>
+                <h2 className="text-lg font-semibold text-gray-800">Visit Our Deluxe Hotel</h2>
                 <button 
                     className="mt-3 rounded-md bg-sky-600 hover:bg-indigo-600 px-4 py-2 text-white 
                     font-medium shadow-md transition-all duration-300"
