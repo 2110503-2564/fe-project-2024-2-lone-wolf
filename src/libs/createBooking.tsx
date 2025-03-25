@@ -1,7 +1,8 @@
 import { Dayjs } from "dayjs"
 
 export default async function createBooking(token:string, id:string, date:Dayjs) {
-    const response = await fetch(`http://localhost:5000/api/hotels/${id}/appointments`, {
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+    const response = await fetch(`${BASE_URL}/api/hotels/${id}/appointments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 
 export default async function getHotels() {
-    
-    const response = await fetch("http://localhost:5000/api/hotels", {
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+    const response = await fetch(`${BASE_URL}/api/hotels`, {
         method: "GET",
     })
 

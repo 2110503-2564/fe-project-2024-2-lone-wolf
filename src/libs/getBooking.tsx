@@ -1,7 +1,7 @@
 
 export default async function getBooking(token:string) {
-    
-    const response = await fetch("http://localhost:5000/api/appointments", {
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+    const response = await fetch(`${BASE_URL}/api/appointments`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${token}`,
