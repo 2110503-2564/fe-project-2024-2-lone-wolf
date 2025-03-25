@@ -1,7 +1,6 @@
 import { Dayjs } from "dayjs"
 
 export default async function createBooking(token:string, id:string, date:Dayjs) {
-    id = '67bb46c5dc54dc6929a4b8da'
     const response = await fetch(`http://localhost:5000/api/hotels/${id}/appointments`, {
         method: "POST",
         headers: {
