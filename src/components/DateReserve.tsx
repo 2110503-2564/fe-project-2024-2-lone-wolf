@@ -42,7 +42,6 @@ import { Select, MenuItem } from '@mui/material'
 
 interface DateReserveProps {
     onDateChange: (date: Dayjs | null) => void;
-    onLocationChange: (location: string) => void;
 }
 
 export default function DateReserve({ onDateChange }: DateReserveProps) {
