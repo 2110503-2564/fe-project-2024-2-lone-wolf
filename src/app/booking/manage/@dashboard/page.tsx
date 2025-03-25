@@ -5,6 +5,7 @@ import Venue from "@/db/models/Venue";
 import { dbConnect } from "@/db/dbConnect";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { UserData, UserDataJson } from "../../../../../interface";
 
 export default async function DashboardPage() {
 
@@ -32,10 +33,9 @@ export default async function DashboardPage() {
     const session = await getServerSession(authOptions)
     if(!session || !session.user.token) return null
 
-    const profile = await getUserProfile(session.user.token)
-    var createdAt = new Date(profile.data.createdAt)
+    const profile:UserDataJson  = await getUserProfile(session.user.token)
+    var createdAt = new Date(profile.data.created);
 
-    console.log(profile)
     return(
         <main className="m-5 p-5">
             <div className="text-2xl">{profile.data.name}</div>
@@ -46,8 +46,8 @@ export default async function DashboardPage() {
                         <td>{profile.data.email}</td>
                     </tr>
                     <tr>
-                        <td>Tel.</td>
-                        <td>{profile.data.tel}</td>
+                        <td>Role</td>
+                        <td>{profile.data.role}</td>
                     </tr>
                     <tr>
                         <td>Member Since</td>

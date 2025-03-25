@@ -6,12 +6,6 @@ import getBooking from "@/libs/getBooking";
 import getHotel from "@/libs/getHotel";
 
 export default async function VenueDetailPage({params}: {params: {vid:string}}){
-
-    // const mockVenueRepo = new Map()
-    // mockVenueRepo.set("001", {name:"The Bloom Pavilion", image:"/img/bloom.jpg"});
-    // mockVenueRepo.set("002", {name:"Spark Space", image:"/img/sparkspace.jpg"});
-    // mockVenueRepo.set("003", {name:"The Grand Table", image:"/img/grandtable.jpg"});
-
     const venueDetail= await getHotel(params.vid)
 
     return(

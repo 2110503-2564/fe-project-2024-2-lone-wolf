@@ -1,7 +1,7 @@
 import styles from './topmenu.module.css'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth';
-import { Link } from '@mui/material';
+import Link from 'next/link';
 import TopMenuItem from './TopMenuItem';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
@@ -14,17 +14,16 @@ export default async function TopMenu () {
             <Image src={'/img/logo.png'} className={styles.logoimg}
             alt='logo' width={0} height={0} sizes="100vh"/>
             <TopMenuItem title='Select Hotel' pageRef='/venue'/>
-            <TopMenuItem title='Booking' pageRef='/booking'/> 
-            <TopMenuItem title='Cart' pageRef='/cart'/>
+            <TopMenuItem title='My Booking' pageRef='/cart'/>
             {
                 session?
                 (
                     <div className='flex flex-row absolute left-0 h-full'>
-                        <Link href="booking/manage">
+                        <Link href="/booking/manage">
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Profile</div>
                         </Link>
-                        <Link href="api/auth/signout">
+                        <Link href="/api/auth/signout">
                         <div className='flex items-center left-0 h-full px-2
                         text-cyan-600 text-sm'>
                             Sign-Out of {session.user?.name}
@@ -38,7 +37,7 @@ export default async function TopMenu () {
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Sign-In</div>
                         </Link>
-                        <Link href="api/auth/register">
+                        <Link href="/api/auth/register">
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Sign-Up</div>
                         </Link>

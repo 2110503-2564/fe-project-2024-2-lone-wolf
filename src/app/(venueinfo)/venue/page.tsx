@@ -18,9 +18,6 @@ export default async function Venue() {
             <Suspense fallback={<div className="flex justify-center items-center py-10"><LinearProgress className="w-full" /></div>}>
                 <VenueCatalog venuesJson={venues} />
             </Suspense>
-            <hr className="my-10 border-t border-gray-300" />
-            <h1 className="text-xl font-medium text-gray-700 mb-6">TRY Client-Side Hotel</h1>
-            <CardPanel />
         </main>
     )
 }

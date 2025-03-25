@@ -26,6 +26,19 @@ export interface VenueItem {
     tel: string;
   }
 
+export interface UserData {
+  _id: string,
+  name: string,
+  email: string,
+  role: string,
+  created: string,
+}
+
+export interface UserDataJson {
+  success: boolean;
+  data: UserData;
+}
+
 export interface Hotel {
     _id: string;
     name: string;
