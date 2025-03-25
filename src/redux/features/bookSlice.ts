@@ -15,8 +15,8 @@ export const bookSlice = createSlice({
         addBooking: (state, action:PayloadAction<BookingItem>)=>{
             const index = state.bookItems.findIndex(
                 (item) =>
-                    item.venue === action.payload.venue &&
-                    item.bookDate === action.payload.bookDate
+                    item.hotel.name === action.payload.hotel.name &&
+                    item.apptDate === action.payload.apptDate
             );
             if (index !== -1) {
                 // if booking in same place and date, use current booking
@@ -28,10 +28,9 @@ export const bookSlice = createSlice({
         },
         removeBooking: (state, action:PayloadAction<BookingItem>)=>{
             const remainItems = state.bookItems.filter(obj => {
-                return ((obj.nameLastname !== action.payload.nameLastname) 
-                || (obj.bookDate !== action.payload.bookDate)
-                || (obj.venue !== action.payload.venue)
-                || (obj.tel !== action.payload.tel))
+                return ((obj.hotel.name !== action.payload.hotel.name) 
+                || (obj.apptDate !== action.payload.apptDate)
+                || (obj.hotel.tel !== action.payload.hotel.tel))
             })
 
             state.bookItems = remainItems
