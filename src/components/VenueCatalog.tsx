@@ -14,8 +14,7 @@ export default async function VenueCatalog({ venuesJson }: { venuesJson: HotelJs
                         <Link
                             href={`/venue/${venueItem.id}`}
                             key={venueItem.id}
-                            className="w-[100%] sm:w-[50%] md:w-[30%] lg:w-[25%] p-2 sm:p-4 md:p-4 lg:p-8"
-                        >
+                            className="w-[100%] sm:w-[50%] md:w-[30%] lg:w-[25%] p-2 sm:p-4 md:p-4 lg:p-8">
                             <Card venueName={venueItem.name} imgSrc='/img/bloom.jpg' />
                         </Link>
                     );

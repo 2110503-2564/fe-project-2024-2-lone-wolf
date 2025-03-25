@@ -66,13 +66,13 @@ export default function Card({ venueName, imgSrc, onRate }: CardProps) {
 
     return (
         <InteractiveCard>
-            <div className="w-full bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div className="w-full h-full relative rounded-t-lg">
                 {/* รูปภาพ */}
                 <div className="w-full h-[70%] relative">
                     <Image
-                        src={imgSrc}
+                        src='/img/bloom.jpg'
                         alt="Product Picture"
-                        fill
+                        fill={true}
                         className="object-cover"
                     />
                 </div>
