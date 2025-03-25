@@ -64,7 +64,6 @@ export default function Reservations() {
                     <label className="text-md font-medium text-gray-700">Pick-Up Date and Location</label>
                     <DateReserve
                         onDateChange={(value: Dayjs|null) => setBookDate(value)}
-                        onLocationChange={(value: string) => setVenue(value)}
                     />
                 </div>
             </div>
