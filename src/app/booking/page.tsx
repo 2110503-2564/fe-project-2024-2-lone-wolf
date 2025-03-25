@@ -10,31 +10,55 @@ import { addBooking } from "@/redux/features/bookSlice";
 import { AppDispatch } from "@/redux/store";
 import { useState } from "react";
 import dayjs, {Dayjs} from "dayjs";
-import { BookingItem } from "../../../interface";
+import { BookingItem, Hotel, HotelJson } from "../../../interface";
 import { useEffect } from "react";
 import createBooking from "@/libs/createBooking";
+import Card from "@/components/Card";
+import DetailCard from "@/components/DetailCard";
+import getHotel from "@/libs/getHotel";
 
 export default function Reservations() {
         const urlParams = useSearchParams()
         const vid = urlParams.get('id')
 
-        const dispatch = useDispatch<AppDispatch>()
-
         const [name, setName] = useState<string>("")
         const [bookDate, setBookDate] = useState<Dayjs|null>(null)
         const [venue, setVenue] = useState<string>("")
         const [tel, setTel] = useState<string>("")
+        const [hotel, setHotel] = useState<Hotel|null>(null)
 
         const { data: session, status } = useSession();  // Access session and its status
 
         const makeReservation = () => {
+            if(!bookDate)
+                alert('Please select booking date')
+
             if(vid && name && bookDate && session) {
                 createBooking(session.user?.token, vid, bookDate);
             }
         }
 
+          const fetchHotel = async () => {
+                try {
+                    if (session && vid) {
+                        const hotelData = await getHotel(vid);
+                        if(hotelData)
+                            setHotel(hotelData.data); // Store bookings in local state
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+            };
+        
+            useEffect(() => {
+                if (vid && session) {
+                    fetchHotel();
+                }
+            }, [vid, session]); // Add dependencies
+            
     return(
         <main className="w-full max-w-lg mx-auto p-6 space-y-6 bg-white rounded-lg shadow-md">
+            { hotel && <DetailCard hotel={hotel}/> }
             <h2 className="text-2xl font-semibold text-center text-gray-800">New Reservation</h2>
 
             <div className="space-y-4">
@@ -76,5 +100,7 @@ export default function Reservations() {
                 Book Hotel
             </button>
         </main>
+
+     
     );
 }

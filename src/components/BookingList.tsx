@@ -1,22 +1,16 @@
 'use client'
-import { removeBooking } from "@/redux/features/bookSlice";
-import { AppDispatch, useAppSelector } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import { BookingItem, BookingJson, VenueItem, VenueJson } from "../../interface";
-import getBooking from "@/libs/getBooking";
-import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { useSession } from "next-auth/react";
+import { BookingItem } from "../../interface";
+import getBooking from "@/libs/getBooking";
 import deleteBooking from "@/libs/deleteBooking";
 import updateBooking from "@/libs/updateBooking";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Dayjs } from "dayjs";
 
 export default function BookingList() {
     const [venueItems, setVenueItems] = useState<BookingItem[] | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true); // Initialize loading as true
     const [error, setError] = useState<string | null>(null);
     const [reserveDate, setReserveDate] = useState<string | null>(null);
     const [currentBookingId, setCurrentBookingId] = useState<string | null>(null);
@@ -31,6 +25,8 @@ export default function BookingList() {
             }
         } catch (err) {
             setError("Failed to fetch bookings.");
+        } finally {
+            setLoading(false); // Set loading to false once data is fetched
         }
     };
 
@@ -41,11 +37,9 @@ export default function BookingList() {
     const handleDelete = async (id: string) => {
         setLoading(true);
         try {
-            // Delete the booking from the backend
             if (session) {
                 await deleteBooking(session?.user.token, id);
             }
-
             await fetchBookings();
         } catch (err) {
             setError("Failed to delete booking.");
@@ -58,10 +52,8 @@ export default function BookingList() {
         setLoading(true);
         try {
             if (session) {
-                // Call API to update booking, you can create an updateBooking function for this
                 await updateBooking(session?.user.token, id, newApptDate);
             }
-
             setReserveDate(null);
             setCurrentBookingId(null);
             await fetchBookings();
@@ -77,10 +69,14 @@ export default function BookingList() {
         setReserveDate(apptDate);
     };
 
+    if (loading) {
+        return <div className="text-center text-lg">Loading your bookings...</div>;
+    }
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="flex flex-col items-center w-full max-w-2xl mx-auto mt-6">
-            {!venueItems? (
+            {!venueItems || venueItems.length === 0 ? (
                 <div className="text-center text-gray-500 text-lg font-medium py-6">No Hotel Booking</div>
             ) : (
                 venueItems.map((reservationItem: BookingItem) => (
@@ -107,7 +103,7 @@ export default function BookingList() {
                                 />
                                 <button
                                     className="mt-2 w-full bg-green-500 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-all duration-300"
-                                    onClick={() => handleUpdate(reservationItem._id, reserveDate)}
+                                    onClick={() => handleUpdate(reservationItem._id, reserveDate!)}
                                 >
                                     Save Changes
                                 </button>
@@ -123,7 +119,9 @@ export default function BookingList() {
                     </div>
                 ))
             )}
-            </div>
+        </div>
         </LocalizationProvider>
+
+        
     );
 }

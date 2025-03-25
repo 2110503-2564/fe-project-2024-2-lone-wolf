@@ -1,7 +1,6 @@
 
 export default async function getHotel(id:string) {
     const BASE_URL = process.env.NEXT_PUBLIC_API_URL
-    console.log("hello")
     const response = await fetch(`${BASE_URL}/api/hotels/${id}`, {
         method: "GET",
     })
