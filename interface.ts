@@ -57,7 +57,10 @@ export interface HotelJson {
 export interface BookingItem {
     _id: string;
     apptDate: string;  // ISO string format
-    user: string;  // User ID reference
+    user: {
+      _id: string,
+      name: string,
+    };  // User ID reference
     hotel: Hotel;  // Embedded hotel object
     created: string;  // ISO string format
     __v: number;

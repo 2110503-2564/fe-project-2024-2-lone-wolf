@@ -81,7 +81,7 @@ export default function BookingList() {
             ) : (
                 venueItems.map((reservationItem: BookingItem) => (
                     <div className="bg-white shadow-lg rounded-lg px-6 py-4 w-full mb-4" key={reservationItem._id}>
-                        <h3 className="text-xl font-semibold text-gray-800">{reservationItem.user}</h3>
+                        <h3 className="text-xl font-semibold text-gray-800">{reservationItem.user.name}</h3>
                         <p className="text-gray-600 text-sm">📞 Tel: {reservationItem.hotel.tel}</p>
                         <p className="text-gray-600 text-sm">🏨 Hotel: {reservationItem.hotel.name}</p>
                         <p className="text-gray-600 text-sm">📅 Booking Date: {reservationItem.apptDate}</p>
