@@ -19,7 +19,7 @@ export default async function TopMenu () {
                 session?
                 (
                     <div className='flex flex-row absolute left-0 h-full'>
-                        <Link href="/booking/manage">
+                        <Link href="/profile">
                         <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
                             Profile</div>
                         </Link>
